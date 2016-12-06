@@ -1,0 +1,34 @@
+version: '2'
+services:
+  php:
+    build: .
+    volumes:
+      - .:/var/www
+    ports:
+      - 8080:80
+    networks:
+      - base
+    links:
+      - postgres:postgresql
+  postgres:
+    image: postgres:9.5
+    environment:
+      - POSTGRES_USER=mvlabs
+      - POSTGRES_PASSWORD=mvlabs
+      - POSTGRES_DB=mvlabs
+    networks:
+      - base
+    ports:
+      - 5432:5432
+  pgadmin:
+    image: fenglc/pgadmin4
+    networks:
+      - base
+    links:
+      - postgres:postgresql
+    depends_on:
+      - postgres
+    ports:
+      - 8081:5050
+networks:
+  base:
