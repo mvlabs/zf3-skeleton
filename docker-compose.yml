@@ -1,15 +1,16 @@
 version: '2'
 services:
   php:
-    build: .
+    build:
+      context: .
+      args:
+        - UID
     volumes:
       - .:/var/www
     ports:
       - 8080:80
     networks:
       - base
-    links:
-      - postgres:postgresql
   postgres:
     image: postgres:9.5
     environment:
@@ -24,8 +25,6 @@ services:
     image: fenglc/pgadmin4
     networks:
       - base
-    links:
-      - postgres:postgresql
     depends_on:
       - postgres
     ports:

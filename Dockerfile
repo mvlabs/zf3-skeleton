@@ -9,4 +9,9 @@ RUN apt-get update \
  && curl -sS https://getcomposer.org/installer \
   | php -- --install-dir=/usr/local/bin --filename=composer
 
+ARG UID
+
+RUN useradd --system --uid $UID -m --shell /bin/bash developer
+ENV APACHE_RUN_USER developer
+
 WORKDIR /var/www
