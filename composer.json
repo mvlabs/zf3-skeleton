@@ -27,7 +27,8 @@
     "autoload": {
         "psr-4": {
             "Application\\": "module/Application/src/",
-            "Events\\": "module/Events/src/"
+            "Events\\": "module/Events/src/",
+            "Admin\\": "module/Admin/src/"
         }
     },
     "autoload-dev": {

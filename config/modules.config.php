@@ -16,6 +16,7 @@ return [
     'Zend\Navigation',
     'Application',
     'Events',
+    'Admin',
 
     "DoctrineModule",
     "DoctrineORMModule",
