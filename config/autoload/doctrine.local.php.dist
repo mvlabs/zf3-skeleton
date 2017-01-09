@@ -1,0 +1,18 @@
+<?php
+return [
+    'doctrine' => [
+        'connection' => [
+            // default connection name
+            'orm_default' => [
+                'driverClass' => '',
+                'params' => [
+                    'host'     => '',
+                    'port'     => '',
+                    'user'     => '',
+                    'password' => '',
+                    'dbname'   => '',
+                ]
+            ]
+        ]
+    ],
+];
