@@ -1,0 +1,21 @@
+<?php $this->headTitle($event->getTitle()); ?>
+<div class="jumbotron">
+    <h2><?=$this->event->getTitle(); ?></h2>
+</div>
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div><h3><?=$event->getDatefrom()->format("d/m/Y"); ?> - <?=$event->getDateto()->format("d/m/Y"); ?></h3></div>
+        <div><h3><?=$event->getCity(); ?>, <?=$event->getCountryName(); ?></h3></div>
+        <div><h3><?=$this->cost($event->getAveragedayfee()); ?></h3></div>
+
+        <h3>Abstract</h3>
+        <p><?=$this->event->getAbstract(); ?></p>
+        <p>
+            <strong>Conference Website:</strong>
+            <a href="<?=$event->getMainsitelink(); ?>"><?=$event->getMainsitelink(); ?></a>
+        </p>
+
+    </div>
+</div>

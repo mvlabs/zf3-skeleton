@@ -13,7 +13,9 @@
 return [
     'Zend\Router',
     'Zend\Validator',
+    'Zend\Navigation',
     'Application',
+    'Events',
 
     "DoctrineModule",
     "DoctrineORMModule",

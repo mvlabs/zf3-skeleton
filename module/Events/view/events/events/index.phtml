@@ -1,0 +1,18 @@
+<?php
+$this->headTitle('Event list');
+$this->headLink()->appendStylesheet('/js/jslider/jslider.css')
+                 ->appendStylesheet('/js/jslider/jslider.blue.css')
+                 ->appendStylesheet('/js/jslider/jslider.ie6.css', array('conditional' => 'lt IE 6'))
+                 ->appendStylesheet('/js/jslider/jslider.blue.ie6.css', array('conditional' => 'lt IE 6'));
+
+$this->headScript()->appendFile('/js/jslider/jquery.dependClass.js')
+                   ->appendFile('/js/jslider/jquery.slider-min.js');
+?>
+<div class="jumbotron">
+    <h2><strong>Best Conferences</strong></h2>
+    <h3>Below you can find the list of conferences for the selected period.We're sure it's now going to be easy for you to identify those not to be missed!</h3>
+</div>
+
+<h4><strong>Conference List</strong></h4>
+
+<?=$this->partial('partials/events.phtml', ['events' => $this->events]); ?>

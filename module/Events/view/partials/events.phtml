@@ -1,0 +1,31 @@
+<?php if (count($this->events) == 0) { ?>
+<div class="row">
+	<div class="col-md-12">
+		<h3>No events happening in selected country soon.</h3>
+		<p>Please use select control on right to pick a different one.</p>
+	</div>
+</div>
+<?php } ?>
+
+<?php foreach ($this->events as $event) { ?>
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><a href="/event?id=<?=$event->getId(); ?>"><?=$event->getTitle(); ?></a></h3>
+            </div>
+            <div class="panel-body">
+				<div><strong><?=$event->getDatefrom()->format("d/m/Y"); ?> - <?=$event->getDateto()->format("d/m/Y"); ?>
+					(<?=$event->getCity(); ?>, <?=$event->getCountryName(); ?>)</strong>
+				</div>
+				<div><?=$this->cost($event->getAveragedayfee()); ?></div>
+				<div>
+					<p><?=$event->getAbstract(); ?></p>
+				</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<?php } ?>
