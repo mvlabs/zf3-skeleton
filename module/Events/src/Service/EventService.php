@@ -64,7 +64,7 @@ class EventService {
      */
     public function getAllEvents()
     {
-        return $this->eventRepository->findAll();
+        return $this->eventRepository->findEventsInVerona();
     }
 
     /**
