@@ -7,6 +7,9 @@
 
 namespace Application;
 
+use Application\Container\Controller\FormControllerFactory;
+use Application\Controller\FormController;
+use Application\Container\Form\FormFactory;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
@@ -34,11 +37,27 @@ return [
                     ],
                 ],
             ],
+            'form' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route' => '/form',
+                    'defaults' => [
+                        'controller' => FormController::class,
+                        'action' => 'form'
+                    ]
+                ]
+            ]
         ],
     ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
+            FormController::class => FormControllerFactory::class,
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
+            FormFactory::SERVICE_NAME => FormFactory::class
         ],
     ],
     'view_manager' => [
