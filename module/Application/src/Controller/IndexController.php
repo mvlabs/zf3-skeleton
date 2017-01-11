@@ -14,6 +14,13 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
+        $this->getEventManager()->trigger(
+            'operazione',
+            $this,
+            ['tipo' => 'Action Executed']
+        );
+
+
         return new ViewModel();
     }
 }
