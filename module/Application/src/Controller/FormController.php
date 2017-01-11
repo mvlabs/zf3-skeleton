@@ -29,7 +29,7 @@ final class FormController extends AbstractActionController
             $this->form->setData($data);
 
             if ($this->form->isValid()) {
-                var_dump($this->form->getData());die;
+                var_dump($this->form->getObject());die;
             }
         }
 

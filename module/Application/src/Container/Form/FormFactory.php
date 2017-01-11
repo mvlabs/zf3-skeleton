@@ -5,11 +5,13 @@ declare(strict_types = 1);
 
 namespace Application\Container\Form;
 
+use Application\Entity\EmailMessage;
 use Interop\Container\ContainerInterface;
 use Zend\Filter\StringToLower;
 use Zend\Form\Element\Email;
 use Zend\Form\Element\Textarea;
 use Zend\Form\Factory;
+use Zend\Hydrator\ClassMethods;
 use Zend\Validator\EmailAddress;
 
 final class FormFactory
@@ -65,6 +67,8 @@ final class FormFactory
                     ],
                 ],
             ],
+            'hydrator' => ClassMethods::class,
+            'object' => EmailMessage::class
         ]);
     }
 }
