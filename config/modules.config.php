@@ -11,13 +11,24 @@
  * This should be an array of module namespaces used in the application.
  */
 return [
+    'Zend\Serializer',
     'Zend\Router',
     'Zend\Validator',
     'Zend\Navigation',
-    'Application',
-    'Events',
-    'Admin',
+    'Zend\Mvc\Plugin\Prg',
+    'Zend\I18n',
+    'Zend\Form',
 
+    // 3rd party modules
     "DoctrineModule",
     "DoctrineORMModule",
+    'ZfcUser',
+    'ZfcUserDoctrineORM',
+    'BjyAuthorize',
+
+    // My modules
+    'Events',
+    'Admin',
+    'Application',
+
 ];

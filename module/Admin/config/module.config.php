@@ -39,4 +39,11 @@ return [
             __DIR__ . '/../view',
         ],
     ],
+    'bjyauthorize' => [
+        'guards' => [
+            'BjyAuthorize\Guard\Controller' => [
+                ['controller' => Controller\IndexController::class, 'roles' => ['admin']],
+            ],
+        ],
+    ],
 ];

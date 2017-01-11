@@ -49,6 +49,20 @@ return [
             ],
         ],
     ],
+    'doctrine' => [
+        'driver' => [
+            __NAMESPACE__ . '_driver' => [
+                'class' => \Doctrine\ORM\Mapping\Driver\AnnotationDriver::class,
+                'cache' => 'array',
+                'paths' => [__DIR__ . '/../src//Entity']
+            ],
+            'orm_default' => [
+                'drivers' => [
+                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
+                ]
+            ],
+        ],
+    ],
     'view_manager' => [
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
@@ -65,4 +79,14 @@ return [
             __DIR__ . '/../view',
         ],
     ],
+    'bjyauthorize' => [
+        'guards' => [
+            'BjyAuthorize\Guard\Controller' => [
+                // Enable access to ZFC User pages
+                ['controller' => 'zfcuser', 'roles' => []],
+
+                ['controller' => Controller\IndexController::class, 'roles' => []],
+            ]
+        ]
+    ]
 ];
