@@ -8,6 +8,7 @@
 namespace Application;
 
 use Application\Controller\IndexController;
+use Application\Listener\MyListener;
 use Zend\EventManager\EventInterface;
 use Zend\Mvc\MvcEvent;
 
@@ -22,14 +23,18 @@ class Module
 
     public function onBootstrap(MvcEvent $event)
     {
+        $serviceManager = $event->getApplication()->getServiceManager();
         $eventManager = $event->getApplication()->getEventManager()->getSharedManager();
 
-        $eventManager->attach(
-            IndexController::class,
-            'operazione',
-            function(EventInterface $event) {
-                var_dump($event->getName(), $event->getParams());die;
-            }
-        );
+        $listener = $serviceManager->get(MyListener::class);
+        $listener->attach($eventManager);
+
+        // IF WE NEED TO ATTACH TO A MVC EVENT, WE DON'T NEED THE SHARED EVENT MANAGER
+        /*
+        $eventManage = $event->getApplication()->getEventManager();
+        $eventManager->attach(MvcEvent::EVENT_DISPATCH, function(EventInterface $event) {
+            var_dump($event->getName(), $event->getParams());die;
+        });
+        */
     }
 }
